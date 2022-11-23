@@ -23254,13 +23254,18 @@
     scene.background = new Color(0);
     scene.environment = pmremGenerator.fromScene(environment).texture;
     controls = new OrbitControls(camera, renderer.domElement);
+    controls.onMouse;
     controls.enableDamping = true;
     controls.minDistance = 1;
     controls.maxDistance = 10;
     controls.target.set(0, 0.35, 0);
     controls.autoRotate = true;
+    controls.enableZoom = false;
     controls.update();
     window.addEventListener("resize", onWindowResize);
+    window.addEventListener("mousedown", function() {
+      controls.autoRotate = false;
+    });
   }
   function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
